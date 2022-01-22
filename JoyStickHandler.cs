@@ -30,11 +30,6 @@ public class JoyStickHandler : MonoBehaviour,IPointerDownHandler,IPointerUpHandl
         mRadius = (joyStickBG.rect.width - joyStickCenter.rect.width) / 2;
     }
 
-    void Update()
-    {
-
-    }
-
     public void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);
@@ -45,21 +40,17 @@ public class JoyStickHandler : MonoBehaviour,IPointerDownHandler,IPointerUpHandl
     }
     public void OnDrag(PointerEventData eventData)
     {
-        //Debug.Log("eventData.position:" + eventData.position + ", joyStickBG.position:" + joyStickBG.position);
         targetDir = eventData.position - originPos;
         ratio =(targetDir.magnitude > mRadius)?(mRadius / targetDir.magnitude):1;
         targetDir.x *= ratio;
         targetDir.y *= ratio;
-        //Debug.Log("targetDir:"+ targetDir);
+
         joyStickCenter.position = originPos + targetDir;
         Horizontal = targetDir.x / mRadius;
         Vertical = targetDir.y / mRadius;
         Debug.Log("Horizontal" + Horizontal + ", Vertical" + Vertical);
     }
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        
-    }
+
     public void OnEndDrag(PointerEventData eventData)
     {
         joyStickCenter.transform.position = originPos;
