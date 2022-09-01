@@ -8,10 +8,8 @@ using UnityEngine.UI;
 
 public class JoyStickHandler : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IDragHandler,IBeginDragHandler,IEndDragHandler
 {
-    [SerializeField]
-    private RectTransform joyStickBG;
-    [SerializeField]
-    private RectTransform joyStickCenter;
+    public RectTransform joyStickBG;
+    public RectTransform joyStickCenter;
     private Vector2 originPos;
     private Vector2 targetPos;
     private Vector2 targetDir;
